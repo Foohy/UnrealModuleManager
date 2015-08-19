@@ -7,7 +7,7 @@ using System.IO;
 
 namespace ModuleManager
 {
-    class PathUtils
+    class StringUtils
     {
         //Return a relative path of a file in relation to a folder
         public static string GetRelativePath(string folderRel, string folderRoot)

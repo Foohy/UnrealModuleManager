@@ -22,7 +22,7 @@ namespace ModuleManager.Generator
         public const string TemplateDir = "Templates\\";
 
         //Registry key locations
-        public const string UnrealInstallReg = "HKEY_LOCAL_MACHINE/SOFTWARE/EpicGames/Unreal Engine/";
+        public const string UnrealInstallReg = "HKEY_LOCAL_MACHINE\\SOFTWARE\\EpicGames\\Unreal Engine";
   
         //Useful paths
         private string ProjectFile;
@@ -59,8 +59,8 @@ namespace ModuleManager.Generator
 
             //Grab engine dependencies, now that we know what engine version we're using
             EngineSourcePath = GetProjectEngineSourcePath();
-            if (!string.IsNullOrEmpty(EngineSourcePath))
-                EngineModules = GetModules(EngineSourcePath, false);
+            if (Directory.Exists(EngineSourcePath))
+                EngineModules = LoadEngineModules(EngineSourcePath);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace ModuleManager.Generator
                 string newFileName = Path.GetFileName(Filename).Replace(ModuleNameToken, ModuleName);
 
                 //Get the path relative to the templates folder
-                string relativePath = PathUtils.GetRelativePath(Path.GetDirectoryName(Filename), TemplatePath);
+                string relativePath = StringUtils.GetRelativePath(Path.GetDirectoryName(Filename), TemplatePath);
                 string outputFilepath = Path.Combine(ModulePath, relativePath, newFileName);
 
                 Console.WriteLine("[GENERATE] {0}", outputFilepath);
@@ -160,12 +160,32 @@ namespace ModuleManager.Generator
             return Path.Combine(installDir, EngineVersion, "Engine\\Source\\");
         }
 
-        private void LoadEngineModules(string engineSourcePath)
+        private ModuleDefinition[] LoadEngineModules(string engineSourcePath)
         {
+            List<ModuleDefinition> moduleBuilder = new List<ModuleDefinition>();
+
             //The engine's source path is set up so each subfolder
             //Is the module type. So organize by that
 
             string[] directories = Directory.GetDirectories(engineSourcePath);
+
+            foreach (string dir in directories)
+            {
+                //Attempt to figure out what enum the folder name matches
+                string FolderName = Path.GetFileName(dir);
+                ModuleType type;
+                if (!Enum.TryParse<ModuleType>(FolderName, out type)) continue;
+
+                ModuleDefinition[] definitions = GetModules(dir, false);
+                
+                //Set the type for each module found
+                foreach (ModuleDefinition def in definitions)
+                    def.SetUProjectSettings(new UProjectModule(type));
+
+                moduleBuilder.AddRange(definitions);
+            }
+
+            return moduleBuilder.ToArray();
             
         }
 
@@ -175,7 +195,7 @@ namespace ModuleManager.Generator
             string[] folders = Directory.GetDirectories(ModulePath);
             foreach (string folder in folders)
             {
-                ModuleDefinition def = ModuleDefinition.TryParseModule(folder, true);
+                ModuleDefinition def = ModuleDefinition.TryParseModule(folder, isProject);
 
                 if (def != null)
                 {

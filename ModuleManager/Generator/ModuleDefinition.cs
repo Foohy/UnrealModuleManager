@@ -11,6 +11,8 @@ namespace ModuleManager.Generator
 {
     public enum ModuleLoadingPhase
     {
+        Unknown,
+
         Default,
         PreDefault,
         PostConfigInit,
@@ -18,6 +20,8 @@ namespace ModuleManager.Generator
 
     public enum ModuleType
     {
+        Unknown,
+
         Runtime,
         RuntimeNoCommandlet,
         Developer,
@@ -73,6 +77,17 @@ namespace ModuleManager.Generator
         public string[] AdditionalDependencies = new string[0];
 
         public static UProjectModule InvalidModule = new UProjectModule();
+
+        public UProjectModule()
+        {
+
+        }
+
+        public UProjectModule(ModuleType mtType)
+        {
+            Type = mtType;
+        }
+
 
         public static UProjectModule LoadFromJObject(JToken ModuleToken)
         {
