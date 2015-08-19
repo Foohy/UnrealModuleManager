@@ -50,6 +50,13 @@ namespace ModuleManager
                 ListViewItem item = listAllModules.Items.Add(def.ModuleName);
                 item.Tag = def;
             }
+
+            modules = newProject.GetEngineModules();
+            foreach (ModuleDefinition def in modules)
+            {
+                ListViewItem item = listAllModules.Items.Add(def.ModuleName);
+                item.Tag = def;
+            }
         }
 
         private void SetEnabled( bool bIsEnabled )
