@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 using System.IO;
 
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+
 namespace ModuleManager.Generator
 {
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ModuleLoadingPhase
     {
         Unknown,
@@ -18,6 +21,7 @@ namespace ModuleManager.Generator
         PostConfigInit,
     }
 
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ModuleType
     {
         Unknown,

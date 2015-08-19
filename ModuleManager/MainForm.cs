@@ -93,7 +93,20 @@ namespace ModuleManager
                 //Generate GO
                 try
                 {
-                    LoadedProject.GenerateNewModule(dialog.ModuleName, dialog.GetPublicDependencies(), dialog.GetPrivateDependencies());
+                    UProjectModule settings = null;
+
+                    if (dialog.ShouldWriteToProjectFile)
+                    {
+                        settings = new UProjectModule()
+                        {
+                            Name = dialog.ModuleName,
+                            LoadingPhase = dialog.LoadPhase,
+                            Type = dialog.Type,
+                            AdditionalDependencies = dialog.GetAdditionalDependencies()
+                        };
+                    }
+
+                    LoadedProject.GenerateNewModule(dialog.ModuleName, dialog.GetPublicDependencies(), dialog.GetPrivateDependencies(), settings);
                 }
                 catch (Exception ex)
                 {

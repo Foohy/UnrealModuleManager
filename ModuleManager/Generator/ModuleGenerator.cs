@@ -64,12 +64,13 @@ namespace ModuleManager.Generator
         }
 
         /// <summary>
-        /// 
+        ///  Generate a new module for your current project
         /// </summary>
         /// <param name="ModuleName">The name of the Unreal module to create</param>
         /// <param name="PublicDependencies"></param>
         /// <param name="PrivateDependencies"></param>
-        public void GenerateNewModule(string ModuleName, string[] PublicDependencies, string[] PrivateDependencies)
+        /// <param name="settings"></param>
+        public void GenerateNewModule(string ModuleName, string[] PublicDependencies, string[] PrivateDependencies, UProjectModule settings)
         {
             //Generate a brand new module
             string ModulePath = Path.Combine(SourcePath, ModuleName);
@@ -81,7 +82,7 @@ namespace ModuleManager.Generator
             string[] Files = null;
             try
             {
-                Files = Directory.GetFiles(TemplatePath,"*", SearchOption.AllDirectories);
+                Files = Directory.GetFiles(TemplatePath, "*", SearchOption.AllDirectories);
             }
             catch (DirectoryNotFoundException ex) { }
 
@@ -105,7 +106,25 @@ namespace ModuleManager.Generator
                 File.WriteAllText(outputFilepath, builtFile);
             }
 
+            //Now, attempt to overwrite the *.uproject file with our new module entry
+            //prepare your butts
+            if (settings != null)
+            {
+                addOrEditUprojectModule(ProjectFile, ModuleName, settings);
+            }
+
             Console.WriteLine("[GENERATE] Finished!");
+        }
+
+        /// <summary>
+        /// Generate a new module for your current project
+        /// </summary>
+        /// <param name="ModuleName">The name of the Unreal module to create</param>
+        /// <param name="PublicDependencies"></param>
+        /// <param name="PrivateDependencies"></param>
+        public void GenerateNewModule(string ModuleName, string[] PublicDependencies, string[] PrivateDependencies)
+        {
+            GenerateNewModule(ModuleName, PublicDependencies, PrivateDependencies, null);
         }
 
         /// <summary>
@@ -237,6 +256,42 @@ namespace ModuleManager.Generator
             templateStr = templateStr.Replace(ModuleNameToken, ModuleName);
 
             return templateStr;
+        }
+
+        private void addOrEditUprojectModule( string unrealProjectPath, string moduleName, UProjectModule settings )
+        {
+            string json;
+            try
+            {
+                json = File.ReadAllText(unrealProjectPath);
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
+
+            JObject uproject = JObject.Parse(json);
+
+            //Get the array of modules and try to find to find a matching one to update
+            JArray moduleArray = (JArray)uproject["Modules"];
+            IEnumerator<JToken> e = moduleArray.GetEnumerator();
+            foreach (JToken moduleJson in moduleArray.Children().ToList())
+            {
+                UProjectModule jsonConv = UProjectModule.LoadFromJObject(moduleJson);
+
+                //If they're matching names, remove it from the array (we'll add it later)
+                if (jsonConv.Name.Equals(settings.Name, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    moduleJson.Remove();
+                    break;
+                }
+            }
+
+            //Add to the array
+            moduleArray.Add(JToken.FromObject(settings));
+
+            //Write it out to the file
+            File.WriteAllText(unrealProjectPath, uproject.ToString());
         }
 
         private bool ParseUnrealProject( string unrealProjectPath )
