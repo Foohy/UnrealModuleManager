@@ -1,7 +1,8 @@
 // Copyright ©  All rights reserved
+//MODULE_NAME.cpp
 
-#include "MyModulePrivatePCH.h"
-#include "MyModule.h"
+#include "MODULE_NAMEPrivatePCH.h"
+#include "MODULE_NAME.h"
 
 class MODULE_NAME_UPPER_API FMODULE_NAMEModule : public IMODULE_NAMEModule
 {
