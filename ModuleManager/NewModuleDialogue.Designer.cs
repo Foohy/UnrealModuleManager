@@ -82,7 +82,7 @@
             this.btnCreate.Location = new System.Drawing.Point(219, 11);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(75, 23);
-            this.btnCreate.TabIndex = 2;
+            this.btnCreate.TabIndex = 4;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
@@ -94,7 +94,7 @@
             this.btnCancel.Location = new System.Drawing.Point(300, 11);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -121,7 +121,7 @@
             this.groupBox1.Location = new System.Drawing.Point(15, 32);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(360, 157);
-            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dependencies (one per line)";
             // 
@@ -138,7 +138,7 @@
             this.groupUProjSettings.Location = new System.Drawing.Point(15, 218);
             this.groupUProjSettings.Name = "groupUProjSettings";
             this.groupUProjSettings.Size = new System.Drawing.Size(360, 186);
-            this.groupUProjSettings.TabIndex = 13;
+            this.groupUProjSettings.TabIndex = 3;
             this.groupUProjSettings.TabStop = false;
             this.groupUProjSettings.Text = "UProject Settings";
             // 
@@ -151,7 +151,7 @@
             this.checkShouldEditUProject.Location = new System.Drawing.Point(12, 195);
             this.checkShouldEditUProject.Name = "checkShouldEditUProject";
             this.checkShouldEditUProject.Size = new System.Drawing.Size(101, 17);
-            this.checkShouldEditUProject.TabIndex = 0;
+            this.checkShouldEditUProject.TabIndex = 2;
             this.checkShouldEditUProject.Text = "Add to .uproject";
             this.checkShouldEditUProject.UseVisualStyleBackColor = true;
             this.checkShouldEditUProject.CheckedChanged += new System.EventHandler(this.checkShouldEditUProject_CheckedChanged);
@@ -164,7 +164,7 @@
             this.comboModuleType.Location = new System.Drawing.Point(76, 31);
             this.comboModuleType.Name = "comboModuleType";
             this.comboModuleType.Size = new System.Drawing.Size(184, 21);
-            this.comboModuleType.TabIndex = 1;
+            this.comboModuleType.TabIndex = 4;
             // 
             // comboLoadingPhase
             // 
@@ -174,7 +174,7 @@
             this.comboLoadingPhase.Location = new System.Drawing.Point(76, 71);
             this.comboLoadingPhase.Name = "comboLoadingPhase";
             this.comboLoadingPhase.Size = new System.Drawing.Size(184, 21);
-            this.comboLoadingPhase.TabIndex = 2;
+            this.comboLoadingPhase.TabIndex = 5;
             // 
             // label4
             // 
@@ -203,7 +203,7 @@
             this.textAdditionalDependencies.Multiline = true;
             this.textAdditionalDependencies.Name = "textAdditionalDependencies";
             this.textAdditionalDependencies.Size = new System.Drawing.Size(278, 68);
-            this.textAdditionalDependencies.TabIndex = 11;
+            this.textAdditionalDependencies.TabIndex = 6;
             this.textAdditionalDependencies.WordWrap = false;
             // 
             // label6
@@ -232,7 +232,7 @@
             this.listAddedItems.MultiSelect = false;
             this.listAddedItems.Name = "listAddedItems";
             this.listAddedItems.Size = new System.Drawing.Size(348, 103);
-            this.listAddedItems.TabIndex = 13;
+            this.listAddedItems.TabIndex = 1;
             this.listAddedItems.UseCompatibleStateImageBehavior = false;
             this.listAddedItems.View = System.Windows.Forms.View.Details;
             this.listAddedItems.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.listAddedItems_ItemChecked);
@@ -254,7 +254,7 @@
             this.btnAddDependency.Location = new System.Drawing.Point(279, 127);
             this.btnAddDependency.Name = "btnAddDependency";
             this.btnAddDependency.Size = new System.Drawing.Size(75, 23);
-            this.btnAddDependency.TabIndex = 17;
+            this.btnAddDependency.TabIndex = 3;
             this.btnAddDependency.Text = "Add...";
             this.btnAddDependency.UseVisualStyleBackColor = true;
             this.btnAddDependency.Click += new System.EventHandler(this.btnAddDependency_Click);
@@ -268,7 +268,7 @@
             this.textAddDependency.Location = new System.Drawing.Point(118, 128);
             this.textAddDependency.Name = "textAddDependency";
             this.textAddDependency.Size = new System.Drawing.Size(155, 20);
-            this.textAddDependency.TabIndex = 18;
+            this.textAddDependency.TabIndex = 2;
             this.textAddDependency.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textAddDependency_KeyDown);
             // 
             // columnHeader1
