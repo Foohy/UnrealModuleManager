@@ -155,5 +155,10 @@ namespace ModuleManager
             //Update the side view info
             updateSelectionInfo(selectedDef);
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
