@@ -85,6 +85,15 @@ namespace ModuleManager
             return true;
         }
 
+        private bool removeSelectedDependency()
+        {
+            if (listAddedItems.SelectedItems.Count <= 0)
+                return false;
+
+            listAddedItems.SelectedItems[0].Remove();
+            return true;
+        }
+
         private void btnCreate_Click(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -114,6 +123,26 @@ namespace ModuleManager
                 if (addDependency(textAddDependency.Text))
                     textAddDependency.Text = "";
             }
+        }
+
+        private void contextItem_Opening(object sender, CancelEventArgs e)
+        {
+            if (listAddedItems.SelectedItems.Count <=0)
+            {
+                e.Cancel = true;
+                return;
+            }
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            removeSelectedDependency();
+        }
+
+        private void listAddedItems_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+                removeSelectedDependency();
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textModuleName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCreate = new System.Windows.Forms.Button();
@@ -48,9 +49,12 @@
             this.textAddDependency = new System.Windows.Forms.TextBox();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextItem = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupUProjSettings.SuspendLayout();
+            this.contextItem.SuspendLayout();
             this.SuspendLayout();
             // 
             // textModuleName
@@ -219,16 +223,19 @@
             this.listAddedItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
+            this.listAddedItems.ContextMenuStrip = this.contextItem;
             this.listAddedItems.FullRowSelect = true;
             this.listAddedItems.GridLines = true;
             this.listAddedItems.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.listAddedItems.Location = new System.Drawing.Point(6, 19);
+            this.listAddedItems.MultiSelect = false;
             this.listAddedItems.Name = "listAddedItems";
             this.listAddedItems.Size = new System.Drawing.Size(363, 115);
             this.listAddedItems.TabIndex = 13;
             this.listAddedItems.UseCompatibleStateImageBehavior = false;
             this.listAddedItems.View = System.Windows.Forms.View.Details;
             this.listAddedItems.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.listAddedItems_ItemChecked);
+            this.listAddedItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listAddedItems_KeyDown);
             // 
             // label7
             // 
@@ -273,6 +280,21 @@
             this.columnHeader2.Text = "Name";
             this.columnHeader2.Width = 260;
             // 
+            // contextItem
+            // 
+            this.contextItem.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteToolStripMenuItem});
+            this.contextItem.Name = "contextItem";
+            this.contextItem.Size = new System.Drawing.Size(108, 26);
+            this.contextItem.Opening += new System.ComponentModel.CancelEventHandler(this.contextItem_Opening);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
             // NewModuleDialogue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -293,6 +315,7 @@
             this.groupBox1.PerformLayout();
             this.groupUProjSettings.ResumeLayout(false);
             this.groupUProjSettings.PerformLayout();
+            this.contextItem.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -320,5 +343,7 @@
         private System.Windows.Forms.TextBox textAddDependency;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ContextMenuStrip contextItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }
