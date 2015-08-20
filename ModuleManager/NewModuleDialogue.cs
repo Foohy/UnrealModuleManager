@@ -53,7 +53,7 @@ namespace ModuleManager
         {
             var privateOnly = from ListViewItem item in listAddedItems.Items
                               where !item.Checked
-                              select item.SubItems[0].Name;
+                              select item.SubItems[1].Text;
             return privateOnly.ToArray();
         }
 
@@ -61,7 +61,7 @@ namespace ModuleManager
         {
             var privateOnly = from ListViewItem item in listAddedItems.Items
                               where item.Checked
-                              select item.SubItems[0].Name;
+                              select item.SubItems[1].Text;
             return privateOnly.ToArray();
         }
 
