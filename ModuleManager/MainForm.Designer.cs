@@ -68,9 +68,9 @@
             this.newToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(480, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(440, 24);
             this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Text = "menuStripTop";
             // 
             // fileToolStripMenuItem
             // 
@@ -126,7 +126,7 @@
             this.listAllModules.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.listAllModules.Location = new System.Drawing.Point(0, 0);
             this.listAllModules.Name = "listAllModules";
-            this.listAllModules.Size = new System.Drawing.Size(250, 209);
+            this.listAllModules.Size = new System.Drawing.Size(210, 220);
             this.listAllModules.TabIndex = 1;
             this.listAllModules.UseCompatibleStateImageBehavior = false;
             this.listAllModules.View = System.Windows.Forms.View.Details;
@@ -156,8 +156,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(480, 209);
-            this.splitContainer1.SplitterDistance = 250;
+            this.splitContainer1.Size = new System.Drawing.Size(440, 220);
+            this.splitContainer1.SplitterDistance = 210;
             this.splitContainer1.TabIndex = 2;
             // 
             // panel1
@@ -177,7 +177,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(226, 209);
+            this.panel1.Size = new System.Drawing.Size(226, 220);
             this.panel1.TabIndex = 0;
             // 
             // textAdditionalDependencies
@@ -253,7 +253,7 @@
             this.labelModulePath.AutoEllipsis = true;
             this.labelModulePath.Location = new System.Drawing.Point(15, 171);
             this.labelModulePath.Name = "labelModulePath";
-            this.labelModulePath.Size = new System.Drawing.Size(199, 30);
+            this.labelModulePath.Size = new System.Drawing.Size(199, 41);
             this.labelModulePath.TabIndex = 8;
             this.labelModulePath.Text = "None";
             // 
@@ -315,11 +315,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(480, 233);
+            this.ClientSize = new System.Drawing.Size(440, 244);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(350, 255);
             this.Name = "MainForm";
             this.Text = "Unreal Module Manager";
             this.menuStrip1.ResumeLayout(false);

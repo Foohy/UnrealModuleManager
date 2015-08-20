@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewModuleDialogue));
             this.textModuleName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCreate = new System.Windows.Forms.Button();
@@ -63,7 +64,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textModuleName.Location = new System.Drawing.Point(91, 6);
             this.textModuleName.Name = "textModuleName";
-            this.textModuleName.Size = new System.Drawing.Size(299, 20);
+            this.textModuleName.Size = new System.Drawing.Size(284, 20);
             this.textModuleName.TabIndex = 0;
             // 
             // label1
@@ -78,7 +79,7 @@
             // btnCreate
             // 
             this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreate.Location = new System.Drawing.Point(234, 11);
+            this.btnCreate.Location = new System.Drawing.Point(219, 11);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(75, 23);
             this.btnCreate.TabIndex = 2;
@@ -90,7 +91,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(315, 11);
+            this.btnCancel.Location = new System.Drawing.Point(300, 11);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 3;
@@ -103,9 +104,9 @@
             this.panel1.Controls.Add(this.btnCreate);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 422);
+            this.panel1.Location = new System.Drawing.Point(0, 410);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(402, 46);
+            this.panel1.Size = new System.Drawing.Size(387, 46);
             this.panel1.TabIndex = 7;
             // 
             // groupBox1
@@ -119,7 +120,7 @@
             this.groupBox1.Controls.Add(this.listAddedItems);
             this.groupBox1.Location = new System.Drawing.Point(15, 32);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(375, 169);
+            this.groupBox1.Size = new System.Drawing.Size(360, 157);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dependencies (one per line)";
@@ -134,9 +135,9 @@
             this.groupUProjSettings.Controls.Add(this.label4);
             this.groupUProjSettings.Controls.Add(this.comboLoadingPhase);
             this.groupUProjSettings.Controls.Add(this.comboModuleType);
-            this.groupUProjSettings.Location = new System.Drawing.Point(15, 230);
+            this.groupUProjSettings.Location = new System.Drawing.Point(15, 218);
             this.groupUProjSettings.Name = "groupUProjSettings";
-            this.groupUProjSettings.Size = new System.Drawing.Size(375, 186);
+            this.groupUProjSettings.Size = new System.Drawing.Size(360, 186);
             this.groupUProjSettings.TabIndex = 13;
             this.groupUProjSettings.TabStop = false;
             this.groupUProjSettings.Text = "UProject Settings";
@@ -147,7 +148,7 @@
             this.checkShouldEditUProject.AutoSize = true;
             this.checkShouldEditUProject.Checked = true;
             this.checkShouldEditUProject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkShouldEditUProject.Location = new System.Drawing.Point(12, 207);
+            this.checkShouldEditUProject.Location = new System.Drawing.Point(12, 195);
             this.checkShouldEditUProject.Name = "checkShouldEditUProject";
             this.checkShouldEditUProject.Size = new System.Drawing.Size(101, 17);
             this.checkShouldEditUProject.TabIndex = 0;
@@ -162,7 +163,7 @@
             this.comboModuleType.FormattingEnabled = true;
             this.comboModuleType.Location = new System.Drawing.Point(76, 31);
             this.comboModuleType.Name = "comboModuleType";
-            this.comboModuleType.Size = new System.Drawing.Size(199, 21);
+            this.comboModuleType.Size = new System.Drawing.Size(184, 21);
             this.comboModuleType.TabIndex = 1;
             // 
             // comboLoadingPhase
@@ -172,7 +173,7 @@
             this.comboLoadingPhase.FormattingEnabled = true;
             this.comboLoadingPhase.Location = new System.Drawing.Point(76, 71);
             this.comboLoadingPhase.Name = "comboLoadingPhase";
-            this.comboLoadingPhase.Size = new System.Drawing.Size(199, 21);
+            this.comboLoadingPhase.Size = new System.Drawing.Size(184, 21);
             this.comboLoadingPhase.TabIndex = 2;
             // 
             // label4
@@ -201,7 +202,7 @@
             this.textAdditionalDependencies.Location = new System.Drawing.Point(76, 111);
             this.textAdditionalDependencies.Multiline = true;
             this.textAdditionalDependencies.Name = "textAdditionalDependencies";
-            this.textAdditionalDependencies.Size = new System.Drawing.Size(293, 68);
+            this.textAdditionalDependencies.Size = new System.Drawing.Size(278, 68);
             this.textAdditionalDependencies.TabIndex = 11;
             this.textAdditionalDependencies.WordWrap = false;
             // 
@@ -230,7 +231,7 @@
             this.listAddedItems.Location = new System.Drawing.Point(6, 19);
             this.listAddedItems.MultiSelect = false;
             this.listAddedItems.Name = "listAddedItems";
-            this.listAddedItems.Size = new System.Drawing.Size(363, 115);
+            this.listAddedItems.Size = new System.Drawing.Size(348, 103);
             this.listAddedItems.TabIndex = 13;
             this.listAddedItems.UseCompatibleStateImageBehavior = false;
             this.listAddedItems.View = System.Windows.Forms.View.Details;
@@ -241,7 +242,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 143);
+            this.label7.Location = new System.Drawing.Point(6, 131);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(106, 13);
             this.label7.TabIndex = 15;
@@ -250,7 +251,7 @@
             // btnAddDependency
             // 
             this.btnAddDependency.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddDependency.Location = new System.Drawing.Point(294, 139);
+            this.btnAddDependency.Location = new System.Drawing.Point(279, 127);
             this.btnAddDependency.Name = "btnAddDependency";
             this.btnAddDependency.Size = new System.Drawing.Size(75, 23);
             this.btnAddDependency.TabIndex = 17;
@@ -264,9 +265,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textAddDependency.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.textAddDependency.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textAddDependency.Location = new System.Drawing.Point(118, 140);
+            this.textAddDependency.Location = new System.Drawing.Point(118, 128);
             this.textAddDependency.Name = "textAddDependency";
-            this.textAddDependency.Size = new System.Drawing.Size(170, 20);
+            this.textAddDependency.Size = new System.Drawing.Size(155, 20);
             this.textAddDependency.TabIndex = 18;
             this.textAddDependency.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textAddDependency_KeyDown);
             // 
@@ -291,7 +292,7 @@
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -301,13 +302,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(402, 468);
+            this.ClientSize = new System.Drawing.Size(387, 456);
             this.Controls.Add(this.groupUProjSettings);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textModuleName);
             this.Controls.Add(this.checkShouldEditUProject);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(250, 405);
             this.Name = "NewModuleDialogue";
             this.Text = "Create a New Module";
             this.panel1.ResumeLayout(false);
