@@ -14,7 +14,7 @@ namespace ModuleManager
 {
     public partial class MainForm : Form
     {
-        ModuleGenerator LoadedProject;
+        UnrealProject LoadedProject;
         public ModuleDefinition[] ModuleDataSource;
 
         public MainForm()
@@ -22,10 +22,10 @@ namespace ModuleManager
             InitializeComponent();
         }
 
-        private void OnProjectLoaded(ModuleGenerator newProject)
+        private void onProjectLoaded(UnrealProject newProject)
         {
             LoadedProject = newProject;
-            SetEnabled(true);
+            setEnabled(true);
 
             ModuleDataSource = newProject.GetProjectModules();
             ModuleDataSource = ModuleDataSource.Concat( newProject.GetEngineModules()).ToArray();
@@ -38,12 +38,12 @@ namespace ModuleManager
             }
         }
 
-        private void SetEnabled( bool bIsEnabled )
+        private void setEnabled( bool bIsEnabled )
         {
             moduleToolStripMenuItem.Enabled = bIsEnabled;
         }
 
-        private void UpdateSelectionInfo( ModuleDefinition def )
+        private void updateSelectionInfo( ModuleDefinition def )
         {
             labelModuleName.Text = def == null ? "None" : def.ModuleName;
             labelModulePath.Text = def == null ? "None" : def.FullModulePath;
@@ -68,12 +68,12 @@ namespace ModuleManager
             return false;
         }
 
-        private void ReloadModules( string DefaultSelectModuleName )
+        private void reloadModules( string DefaultSelectModuleName )
         {
             //Reload the project, refreshing the generator entirely
-            ModuleGenerator newProj = new ModuleGenerator(LoadedProject.ProjectFile);
+            UnrealProject newProj = new UnrealProject(LoadedProject.ProjectFile);
             if (newProj != null)
-                OnProjectLoaded(newProj);
+                onProjectLoaded(newProj);
 
             //Select the module we want
             findSelectModule(DefaultSelectModuleName);
@@ -87,9 +87,9 @@ namespace ModuleManager
 
                 try
                 {
-                    ModuleGenerator newProj = new ModuleGenerator(fileName);
+                    UnrealProject newProj = new UnrealProject(fileName);
                     if (newProj != null)
-                        OnProjectLoaded(newProj);
+                        onProjectLoaded(newProj);
                 }
                 catch (Exception ex)
                 {
@@ -134,7 +134,7 @@ namespace ModuleManager
                     LoadedProject.GenerateNewModule(dialog.ModuleName, dialog.GetPublicDependencies(), dialog.GetPrivateDependencies(), settings);
 
                     //Reload and select the module with the matching name
-                    ReloadModules(dialog.ModuleName);
+                    reloadModules(dialog.ModuleName);
 
                 }
                 catch (Exception ex)
@@ -153,7 +153,7 @@ namespace ModuleManager
             ModuleDefinition selectedDef = SelectedItem.Tag as ModuleDefinition;
 
             //Update the side view info
-            UpdateSelectionInfo(selectedDef);
+            updateSelectionInfo(selectedDef);
         }
     }
 }

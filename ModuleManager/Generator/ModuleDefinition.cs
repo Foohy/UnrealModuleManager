@@ -55,6 +55,13 @@ namespace ModuleManager.Generator
             IsProjectModule = bIsProjectModule;
         }
 
+        /// <summary>
+        /// Attempt to load a module
+        /// This tests if there is a .build.cs of the same name as the folder it resides in
+        /// </summary>
+        /// <param name="ModulePath">The folderpath to the module</param>
+        /// <param name="isProjectModule">If the given folderpath is from a project or an engine module</param>
+        /// <returns>A newly created module definition if it is valid</returns>
         public static ModuleDefinition TryParseModule(string ModulePath, bool isProjectModule)
         {
             if (!Directory.Exists(ModulePath)) return null;
@@ -66,6 +73,10 @@ namespace ModuleManager.Generator
             return new ModuleDefinition(ModuleName, ModulePath, isProjectModule);
         }
 
+        /// <summary>
+        /// Modify the .uproject specific settings of this module
+        /// </summary>
+        /// <param name="mod"></param>
         public void SetUProjectSettings( UProjectModule mod )
         {
             UProjectSettings = mod;
@@ -92,7 +103,11 @@ namespace ModuleManager.Generator
             Type = mtType;
         }
 
-
+        /// <summary>
+        /// Given a JSON JToken, attempt to create a new UProjectModule class from it
+        /// </summary>
+        /// <param name="ModuleToken">The JToken of json</param>
+        /// <returns>The newly parsed and created projectmodule class</returns>
         public static UProjectModule LoadFromJObject(JToken ModuleToken)
         {
             return JsonConvert.DeserializeObject<UProjectModule>(ModuleToken.ToString());

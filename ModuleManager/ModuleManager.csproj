@@ -54,7 +54,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generator\ModuleGenerator.cs" />
+    <Compile Include="Generator\UnrealProject.cs" />
     <Compile Include="Generator\ModuleDefinition.cs" />
     <Compile Include="NewModuleDialogue.cs">
       <SubType>Form</SubType>

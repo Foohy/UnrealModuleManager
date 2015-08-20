@@ -11,17 +11,22 @@ using Newtonsoft.Json.Linq;
 
 namespace ModuleManager.Generator
 {
-    class ModuleGenerator
+    class UnrealProject
     {
+        //Templating tokens
         public const string ModuleNameToken = "MODULE_NAME";
         public const string ModuleNameCapsToken = "MODULE_NAME_UPPER";
         public const string PublicDependenciesToken = "ADDITIONAL_PUBLIC_DEPENDENCIES";
         public const string PrivateDependenciesToken = "ADDITIONAL_PRIVATE_DEPENDENCIES";
         
-        //Templating
+        /// <summary>
+        /// The templates folder relative to the application working directory
+        /// </summary>
         public const string TemplateDir = "Templates\\";
 
-        //Registry key locations
+        /// <summary>
+        /// Registry key location for the unreal install directory
+        /// </summary>
         public const string UnrealInstallReg = "HKEY_LOCAL_MACHINE\\SOFTWARE\\EpicGames\\Unreal Engine";
   
         //Useful paths
@@ -31,9 +36,24 @@ namespace ModuleManager.Generator
         public string ProjectFile { get; private set; }
 
         //Parsed project information
+        /// <summary>
+        /// The short name of the unreal project
+        /// </summary>
         public string ProjectName { get; private set; }
+
+        /// <summary>
+        /// The string version-number of the unreal engine version the project is built for
+        /// </summary>
         public string EngineVersion { get; private set; }
+
+        /// <summary>
+        /// The category string of the unreal project
+        /// </summary>
         public string Category { get; private set; }
+
+        /// <summary>
+        /// The description of the unreal project
+        /// </summary>
         public string Description { get; private set; }
 
         private string SourcePath;
@@ -44,7 +64,7 @@ namespace ModuleManager.Generator
         public ModuleDefinition[] ProjectModules {get; private set; }
         public ModuleDefinition[] EngineModules { get; private set; }
 
-        public ModuleGenerator( string sProjectFile )
+        public UnrealProject(string sProjectFile)
         {
             if (!File.Exists(sProjectFile))
                 throw new FileNotFoundException();
@@ -53,19 +73,19 @@ namespace ModuleManager.Generator
 
             //Parse project information
             SourcePath = Path.Combine(Path.GetDirectoryName(sProjectFile), "Source");
-            ProjectName = Path.GetFileNameWithoutExtension(sProjectFile);
-           
+            ProjectName = Path.GetFileNameWithoutExtension(sProjectFile);        
 
             //Grab the available dependencies
-            ProjectModules = GetModules(SourcePath, true);
+            ProjectModules = getModules(SourcePath, true);
 
             //Parse the .uproject json
-            ParseUnrealProject(sProjectFile);
+            if (!parseUnrealProject(sProjectFile))
+                throw new System.IO.InvalidDataException("Failed to parse .uproject file!");
 
             //Grab engine dependencies, now that we know what engine version we're using
-            EngineSourcePath = GetProjectEngineSourcePath();
+            EngineSourcePath = getProjectEngineSourcePath();
             if (Directory.Exists(EngineSourcePath))
-                EngineModules = LoadEngineModules(EngineSourcePath);
+                EngineModules = loadEngineModules(EngineSourcePath);
         }
 
         /// <summary>
@@ -106,7 +126,7 @@ namespace ModuleManager.Generator
                 Console.WriteLine("[GENERATE] {0}", outputFilepath);
 
                 //Generate the path
-                string builtFile = GenerateFromTokens(Filename, ModuleName, PublicDependencies, PrivateDependencies);
+                string builtFile = generateFromTokens(Filename, ModuleName, PublicDependencies, PrivateDependencies);
                 Directory.CreateDirectory(Path.GetDirectoryName(outputFilepath));
                 File.WriteAllText(outputFilepath, builtFile);
             }
@@ -176,7 +196,7 @@ namespace ModuleManager.Generator
             return null;
         }
 
-        private string GetProjectEngineSourcePath()
+        private string getProjectEngineSourcePath()
         {
             string installDir = (string)Registry.GetValue(UnrealInstallReg, "INSTALLDIR", "");
             if (!Directory.Exists(installDir)) return "";
@@ -184,7 +204,7 @@ namespace ModuleManager.Generator
             return Path.Combine(installDir, EngineVersion, "Engine\\Source\\");
         }
 
-        private ModuleDefinition[] LoadEngineModules(string engineSourcePath)
+        private ModuleDefinition[] loadEngineModules(string engineSourcePath)
         {
             List<ModuleDefinition> moduleBuilder = new List<ModuleDefinition>();
 
@@ -200,7 +220,7 @@ namespace ModuleManager.Generator
                 ModuleType type;
                 if (!Enum.TryParse<ModuleType>(FolderName, out type)) continue;
 
-                ModuleDefinition[] definitions = GetModules(dir, false);
+                ModuleDefinition[] definitions = getModules(dir, false);
                 
                 //Set the type for each module found
                 foreach (ModuleDefinition def in definitions)
@@ -213,7 +233,7 @@ namespace ModuleManager.Generator
             
         }
 
-        private ModuleDefinition[] GetModules( string ModulePath, bool isProject )
+        private ModuleDefinition[] getModules( string ModulePath, bool isProject )
         {
             List<ModuleDefinition> ModuleBuilder = new List<ModuleDefinition>();
             string[] folders = Directory.GetDirectories(ModulePath);
@@ -230,9 +250,9 @@ namespace ModuleManager.Generator
             return ModuleBuilder.ToArray();
         }
 
-        private string GenerateFromTokens(string templateFile, string ModuleName, string[] PublicDependencies, string[] PrivateDependencies)
+        private string generateFromTokens(string templateFile, string ModuleName, string[] PublicDependencies, string[] PrivateDependencies)
         {
-            string templateStr = GenerateFromTokens(templateFile, ModuleName);
+            string templateStr = generateFromTokens(templateFile, ModuleName);
 
             //Format dependencies like
             // { "Dependency1", "Dependecy2", "Dependency3" } etc.
@@ -252,7 +272,7 @@ namespace ModuleManager.Generator
             return templateStr;
         }
 
-        private string GenerateFromTokens(string templateFile, string ModuleName)
+        private string generateFromTokens(string templateFile, string ModuleName)
         {
             string templateStr = File.ReadAllText(templateFile);
 
@@ -299,7 +319,7 @@ namespace ModuleManager.Generator
             File.WriteAllText(unrealProjectPath, uproject.ToString());
         }
 
-        private bool ParseUnrealProject( string unrealProjectPath )
+        private bool parseUnrealProject( string unrealProjectPath )
         {
             string json;
             try

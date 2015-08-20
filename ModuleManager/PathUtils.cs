@@ -9,7 +9,12 @@ namespace ModuleManager
 {
     class StringUtils
     {
-        //Return a relative path of a file in relation to a folder
+        /// <summary>
+        /// Return a relative path of a file in relation to a folder
+        /// </summary>
+        /// <param name="folderRel">The absolute path of the folder to find the relative path of</param>
+        /// <param name="folderRoot">The absolute path of the root folder to be relative to</param>
+        /// <returns></returns>
         public static string GetRelativePath(string folderRel, string folderRoot)
         {
             //Ensure folder names end with a /
