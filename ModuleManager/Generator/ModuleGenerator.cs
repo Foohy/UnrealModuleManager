@@ -25,15 +25,20 @@ namespace ModuleManager.Generator
         public const string UnrealInstallReg = "HKEY_LOCAL_MACHINE\\SOFTWARE\\EpicGames\\Unreal Engine";
   
         //Useful paths
-        private string ProjectFile;
-        private string SourcePath;
-        private string EngineSourcePath;
+        /// <summary>
+        /// The absolute path to the loaded .uproject file the generator is based upon
+        /// </summary>
+        public string ProjectFile { get; private set; }
 
         //Parsed project information
         public string ProjectName { get; private set; }
         public string EngineVersion { get; private set; }
         public string Category { get; private set; }
         public string Description { get; private set; }
+
+        private string SourcePath;
+        private string EngineSourcePath;
+
 
         //Existing Dependencies
         public ModuleDefinition[] ProjectModules {get; private set; }

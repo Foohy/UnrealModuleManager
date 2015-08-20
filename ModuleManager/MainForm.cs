@@ -22,25 +22,6 @@ namespace ModuleManager
             InitializeComponent();
         }
 
-        private void openProjectToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (openProjectDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                string fileName = openProjectDialog.FileName;
-
-                try
-                {
-                    ModuleGenerator newProj = new ModuleGenerator(fileName);
-                    if (newProj != null)
-                        OnProjectLoaded(newProj);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error loading project", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
         private void OnProjectLoaded(ModuleGenerator newProject)
         {
             LoadedProject = newProject;
@@ -70,6 +51,51 @@ namespace ModuleManager
             labelModuleType.Text = def == null ? "Unknown" : (def.Type.ToString());
             labelModuleLoadingPhase.Text = def == null ? "Unknown" : (def.LoadingPhase.ToString());
             textAdditionalDependencies.Text = string.Join(Environment.NewLine, def.AdditionalDependencies);
+        }
+
+        private bool findSelectModule( string moduleName )
+        {
+            foreach (ListViewItem item in listAllModules.Items)
+            {
+                if (item.Text.Equals(moduleName, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    listAllModules.Focus();
+                    item.Selected = true;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void ReloadModules( string DefaultSelectModuleName )
+        {
+            //Reload the project, refreshing the generator entirely
+            ModuleGenerator newProj = new ModuleGenerator(LoadedProject.ProjectFile);
+            if (newProj != null)
+                OnProjectLoaded(newProj);
+
+            //Select the module we want
+            findSelectModule(DefaultSelectModuleName);
+        }
+
+        private void openProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openProjectDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string fileName = openProjectDialog.FileName;
+
+                try
+                {
+                    ModuleGenerator newProj = new ModuleGenerator(fileName);
+                    if (newProj != null)
+                        OnProjectLoaded(newProj);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error loading project", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void moduleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -104,7 +130,12 @@ namespace ModuleManager
                         };
                     }
 
+                    //Generate the new module with the provided settings
                     LoadedProject.GenerateNewModule(dialog.ModuleName, dialog.GetPublicDependencies(), dialog.GetPrivateDependencies(), settings);
+
+                    //Reload and select the module with the matching name
+                    ReloadModules(dialog.ModuleName);
+
                 }
                 catch (Exception ex)
                 {
