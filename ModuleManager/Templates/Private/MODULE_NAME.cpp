@@ -1,4 +1,5 @@
-//MyModule.cpp
+// Copyright ©  All rights reserved
+
 #include "MyModulePrivatePCH.h"
 #include "MyModule.h"
 

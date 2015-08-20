@@ -1,4 +1,4 @@
-// Copyright Pixeltail Games 2015
+// Copyright ©  All rights reserved
 
 using UnrealBuildTool;
 
