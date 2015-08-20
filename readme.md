@@ -3,12 +3,17 @@ Easy to use tool for generating new modules for the Unreal Engine.
 
 ### What does it do?
 When you open this application with a project's .uproject file, it will quickly scan to see what modules already exist.
+
 ![Module List](http://i.imgur.com/PNvkoRt.png)
 
+
 The new module dialog shows a list of options to pre-set into the new module, including name, dependencies, loading phase, and module type.
+
 ![New Module Settings](http://i.imgur.com/PvqSNb9.png)
 
+
 When you click 'Create', it will create all the files in your source directory, optionally appending an entry to your project's .uproject file with the new module's information. 
+
 ![The generated file structure](http://i.imgur.com/9MRHOT0.png)
 
 ### Why?
