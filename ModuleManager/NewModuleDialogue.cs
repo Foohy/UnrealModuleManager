@@ -51,14 +51,18 @@ namespace ModuleManager
 
         public string[] GetPrivateDependencies()
         {
-            //return textboxPrivateDependencies.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries );
-            return null;
+            var privateOnly = from ListViewItem item in listAddedItems.Items
+                              where !item.Checked
+                              select item.SubItems[0].Name;
+            return privateOnly.ToArray();
         }
 
         public string[] GetPublicDependencies()
         {
-            //return textboxPublicDependencies.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries); 
-            return null;
+            var privateOnly = from ListViewItem item in listAddedItems.Items
+                              where item.Checked
+                              select item.SubItems[0].Name;
+            return privateOnly.ToArray();
         }
 
         public string[] GetAdditionalDependencies()
@@ -69,6 +73,16 @@ namespace ModuleManager
         public bool ShouldWriteToProjectFile
         {
             get { return checkShouldEditUProject.Checked; }
+        }
+
+        private bool addDependency(string Name)
+        {
+            if (string.IsNullOrWhiteSpace(Name)) return false;
+
+            ListViewItem item = listAddedItems.Items.Add("Private");
+            item.SubItems.Add(Name);
+
+            return true;
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -84,17 +98,22 @@ namespace ModuleManager
 
         private void btnAddDependency_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textAddDependency.Text)) return;
-
-            ListViewItem item = listAddedItems.Items.Add("Private");
-            item.SubItems.Add(textAddDependency.Text);
-
-            textAddDependency.Text = "";
+            if (addDependency(textAddDependency.Text))
+                textAddDependency.Text = "";
         }
 
         private void listAddedItems_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
             e.Item.Text = e.Item.Checked ? "Public" : "Private";
+        }
+
+        private void textAddDependency_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (addDependency(textAddDependency.Text))
+                    textAddDependency.Text = "";
+            }
         }
     }
 }

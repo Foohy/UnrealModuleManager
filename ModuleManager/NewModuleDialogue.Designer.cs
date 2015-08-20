@@ -261,6 +261,7 @@
             this.textAddDependency.Name = "textAddDependency";
             this.textAddDependency.Size = new System.Drawing.Size(170, 20);
             this.textAddDependency.TabIndex = 18;
+            this.textAddDependency.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textAddDependency_KeyDown);
             // 
             // columnHeader1
             // 
@@ -274,7 +275,6 @@
             // 
             // NewModuleDialogue
             // 
-            this.AcceptButton = this.btnCreate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
