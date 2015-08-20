@@ -36,7 +36,7 @@ namespace ModuleManager.Generator
         ThirdParty //Only valid for engine modules
     }
 
-    class ModuleDefinition
+    public class ModuleDefinition
     {
         public string ModuleName { get; private set; }
         public string FullModulePath { get; private set; }
@@ -73,7 +73,7 @@ namespace ModuleManager.Generator
 
     }
 
-    class UProjectModule
+    public class UProjectModule
     {
         public string Name;
         public ModuleType Type;

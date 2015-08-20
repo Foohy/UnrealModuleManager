@@ -15,6 +15,8 @@ namespace ModuleManager
     public partial class MainForm : Form
     {
         ModuleGenerator LoadedProject;
+        public ModuleDefinition[] ModuleDataSource;
+
         public MainForm()
         {
             InitializeComponent();
@@ -44,15 +46,11 @@ namespace ModuleManager
             LoadedProject = newProject;
             SetEnabled(true);
 
-            ModuleDefinition[] modules = newProject.GetProjectModules();
-            foreach (ModuleDefinition def in modules)
-            {
-                ListViewItem item = listAllModules.Items.Add(def.ModuleName);
-                item.Tag = def;
-            }
+            ModuleDataSource = newProject.GetProjectModules();
+            ModuleDataSource = ModuleDataSource.Concat( newProject.GetEngineModules()).ToArray();
 
-            modules = newProject.GetEngineModules();
-            foreach (ModuleDefinition def in modules)
+            listAllModules.Items.Clear();
+            foreach (ModuleDefinition def in ModuleDataSource)
             {
                 ListViewItem item = listAllModules.Items.Add(def.ModuleName);
                 item.Tag = def;
@@ -78,7 +76,7 @@ namespace ModuleManager
         {
             if (LoadedProject == null) return;
 
-            NewModuleDialogue dialog = new NewModuleDialogue();
+            NewModuleDialogue dialog = new NewModuleDialogue(ref ModuleDataSource);
             if ( dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK )
             {
                 if (LoadedProject.QueryNewModuleExists(dialog.ModuleName))

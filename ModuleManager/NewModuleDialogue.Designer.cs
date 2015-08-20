@@ -33,12 +33,7 @@
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textboxPublicDependencies = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textboxPrivateDependencies = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupUProjSettings = new System.Windows.Forms.GroupBox();
             this.checkShouldEditUProject = new System.Windows.Forms.CheckBox();
             this.comboModuleType = new System.Windows.Forms.ComboBox();
@@ -47,12 +42,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textAdditionalDependencies = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.listAddedItems = new System.Windows.Forms.ListView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnAddDependency = new System.Windows.Forms.Button();
+            this.textAddDependency = new System.Windows.Forms.TextBox();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
             this.groupUProjSettings.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +59,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textModuleName.Location = new System.Drawing.Point(91, 6);
             this.textModuleName.Name = "textModuleName";
-            this.textModuleName.Size = new System.Drawing.Size(328, 20);
+            this.textModuleName.Size = new System.Drawing.Size(299, 20);
             this.textModuleName.TabIndex = 0;
             // 
             // label1
@@ -77,7 +74,7 @@
             // btnCreate
             // 
             this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreate.Location = new System.Drawing.Point(263, 11);
+            this.btnCreate.Location = new System.Drawing.Point(234, 11);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(75, 23);
             this.btnCreate.TabIndex = 2;
@@ -89,7 +86,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(344, 11);
+            this.btnCancel.Location = new System.Drawing.Point(315, 11);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 3;
@@ -102,89 +99,26 @@
             this.panel1.Controls.Add(this.btnCreate);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 427);
+            this.panel1.Location = new System.Drawing.Point(0, 422);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(431, 46);
+            this.panel1.Size = new System.Drawing.Size(402, 46);
             this.panel1.TabIndex = 7;
-            // 
-            // textboxPublicDependencies
-            // 
-            this.textboxPublicDependencies.AcceptsReturn = true;
-            this.textboxPublicDependencies.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textboxPublicDependencies.Location = new System.Drawing.Point(3, 23);
-            this.textboxPublicDependencies.Multiline = true;
-            this.textboxPublicDependencies.Name = "textboxPublicDependencies";
-            this.textboxPublicDependencies.Size = new System.Drawing.Size(178, 123);
-            this.textboxPublicDependencies.TabIndex = 8;
-            this.textboxPublicDependencies.WordWrap = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 7);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 13);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Public";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 7);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 13);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Private";
-            // 
-            // textboxPrivateDependencies
-            // 
-            this.textboxPrivateDependencies.AcceptsReturn = true;
-            this.textboxPrivateDependencies.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textboxPrivateDependencies.Location = new System.Drawing.Point(3, 23);
-            this.textboxPrivateDependencies.Multiline = true;
-            this.textboxPrivateDependencies.Name = "textboxPrivateDependencies";
-            this.textboxPrivateDependencies.Size = new System.Drawing.Size(198, 123);
-            this.textboxPrivateDependencies.TabIndex = 10;
-            this.textboxPrivateDependencies.WordWrap = false;
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.splitContainer1);
+            this.groupBox1.Controls.Add(this.textAddDependency);
+            this.groupBox1.Controls.Add(this.btnAddDependency);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.listAddedItems);
             this.groupBox1.Location = new System.Drawing.Point(15, 32);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(404, 174);
+            this.groupBox1.Size = new System.Drawing.Size(375, 169);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dependencies (one per line)";
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(6, 19);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.textboxPublicDependencies);
-            this.splitContainer1.Panel1.Controls.Add(this.label2);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.textboxPrivateDependencies);
-            this.splitContainer1.Panel2.Controls.Add(this.label3);
-            this.splitContainer1.Size = new System.Drawing.Size(392, 149);
-            this.splitContainer1.SplitterDistance = 184;
-            this.splitContainer1.TabIndex = 12;
             // 
             // groupUProjSettings
             // 
@@ -196,9 +130,9 @@
             this.groupUProjSettings.Controls.Add(this.label4);
             this.groupUProjSettings.Controls.Add(this.comboLoadingPhase);
             this.groupUProjSettings.Controls.Add(this.comboModuleType);
-            this.groupUProjSettings.Location = new System.Drawing.Point(15, 235);
+            this.groupUProjSettings.Location = new System.Drawing.Point(15, 230);
             this.groupUProjSettings.Name = "groupUProjSettings";
-            this.groupUProjSettings.Size = new System.Drawing.Size(404, 186);
+            this.groupUProjSettings.Size = new System.Drawing.Size(375, 186);
             this.groupUProjSettings.TabIndex = 13;
             this.groupUProjSettings.TabStop = false;
             this.groupUProjSettings.Text = "UProject Settings";
@@ -209,7 +143,7 @@
             this.checkShouldEditUProject.AutoSize = true;
             this.checkShouldEditUProject.Checked = true;
             this.checkShouldEditUProject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkShouldEditUProject.Location = new System.Drawing.Point(12, 212);
+            this.checkShouldEditUProject.Location = new System.Drawing.Point(12, 207);
             this.checkShouldEditUProject.Name = "checkShouldEditUProject";
             this.checkShouldEditUProject.Size = new System.Drawing.Size(101, 17);
             this.checkShouldEditUProject.TabIndex = 0;
@@ -222,9 +156,9 @@
             this.comboModuleType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboModuleType.FormattingEnabled = true;
-            this.comboModuleType.Location = new System.Drawing.Point(50, 32);
+            this.comboModuleType.Location = new System.Drawing.Point(76, 31);
             this.comboModuleType.Name = "comboModuleType";
-            this.comboModuleType.Size = new System.Drawing.Size(228, 21);
+            this.comboModuleType.Size = new System.Drawing.Size(199, 21);
             this.comboModuleType.TabIndex = 1;
             // 
             // comboLoadingPhase
@@ -232,15 +166,15 @@
             this.comboLoadingPhase.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboLoadingPhase.FormattingEnabled = true;
-            this.comboLoadingPhase.Location = new System.Drawing.Point(50, 72);
+            this.comboLoadingPhase.Location = new System.Drawing.Point(76, 71);
             this.comboLoadingPhase.Name = "comboLoadingPhase";
-            this.comboLoadingPhase.Size = new System.Drawing.Size(228, 21);
+            this.comboLoadingPhase.Size = new System.Drawing.Size(199, 21);
             this.comboLoadingPhase.TabIndex = 2;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 16);
+            this.label4.Location = new System.Drawing.Point(35, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 13);
             this.label4.TabIndex = 3;
@@ -249,7 +183,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 56);
+            this.label5.Location = new System.Drawing.Point(35, 55);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(78, 13);
             this.label5.TabIndex = 4;
@@ -260,21 +194,83 @@
             this.textAdditionalDependencies.AcceptsReturn = true;
             this.textAdditionalDependencies.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textAdditionalDependencies.Location = new System.Drawing.Point(50, 112);
+            this.textAdditionalDependencies.Location = new System.Drawing.Point(76, 111);
             this.textAdditionalDependencies.Multiline = true;
             this.textAdditionalDependencies.Name = "textAdditionalDependencies";
-            this.textAdditionalDependencies.Size = new System.Drawing.Size(228, 68);
+            this.textAdditionalDependencies.Size = new System.Drawing.Size(293, 68);
             this.textAdditionalDependencies.TabIndex = 11;
             this.textAdditionalDependencies.WordWrap = false;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 96);
+            this.label6.Location = new System.Drawing.Point(35, 95);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(189, 13);
             this.label6.TabIndex = 12;
             this.label6.Text = "Additional Dependencies (one per line)";
+            // 
+            // listAddedItems
+            // 
+            this.listAddedItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listAddedItems.CheckBoxes = true;
+            this.listAddedItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.listAddedItems.FullRowSelect = true;
+            this.listAddedItems.GridLines = true;
+            this.listAddedItems.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.listAddedItems.Location = new System.Drawing.Point(6, 19);
+            this.listAddedItems.Name = "listAddedItems";
+            this.listAddedItems.Size = new System.Drawing.Size(363, 115);
+            this.listAddedItems.TabIndex = 13;
+            this.listAddedItems.UseCompatibleStateImageBehavior = false;
+            this.listAddedItems.View = System.Windows.Forms.View.Details;
+            this.listAddedItems.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.listAddedItems_ItemChecked);
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 143);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(106, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Dependency Module";
+            // 
+            // btnAddDependency
+            // 
+            this.btnAddDependency.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddDependency.Location = new System.Drawing.Point(294, 139);
+            this.btnAddDependency.Name = "btnAddDependency";
+            this.btnAddDependency.Size = new System.Drawing.Size(75, 23);
+            this.btnAddDependency.TabIndex = 17;
+            this.btnAddDependency.Text = "Add...";
+            this.btnAddDependency.UseVisualStyleBackColor = true;
+            this.btnAddDependency.Click += new System.EventHandler(this.btnAddDependency_Click);
+            // 
+            // textAddDependency
+            // 
+            this.textAddDependency.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textAddDependency.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textAddDependency.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textAddDependency.Location = new System.Drawing.Point(118, 140);
+            this.textAddDependency.Name = "textAddDependency";
+            this.textAddDependency.Size = new System.Drawing.Size(170, 20);
+            this.textAddDependency.TabIndex = 18;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Public?";
+            this.columnHeader1.Width = 80;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Name";
+            this.columnHeader2.Width = 260;
             // 
             // NewModuleDialogue
             // 
@@ -283,7 +279,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(431, 473);
+            this.ClientSize = new System.Drawing.Size(402, 468);
             this.Controls.Add(this.groupUProjSettings);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
@@ -294,12 +290,7 @@
             this.Text = "Create a New Module";
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupUProjSettings.ResumeLayout(false);
             this.groupUProjSettings.PerformLayout();
             this.ResumeLayout(false);
@@ -314,12 +305,7 @@
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textboxPublicDependencies;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textboxPrivateDependencies;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupUProjSettings;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textAdditionalDependencies;
@@ -328,5 +314,11 @@
         private System.Windows.Forms.ComboBox comboLoadingPhase;
         private System.Windows.Forms.ComboBox comboModuleType;
         private System.Windows.Forms.CheckBox checkShouldEditUProject;
+        private System.Windows.Forms.Button btnAddDependency;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ListView listAddedItems;
+        private System.Windows.Forms.TextBox textAddDependency;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }
